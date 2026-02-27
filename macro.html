@@ -3,7 +3,7 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>BIZ-OMICS — Macroeconomics</title>
+<title>BIZ-OMICS — Macro Diagram Cards</title>
 <style>
 /* ── SYSTEM FONT STACK — NO EXTERNAL REQUESTS ── */
 :root{
@@ -31,7 +31,7 @@ header{padding:1.1rem 2.5rem;display:flex;align-items:center;justify-content:spa
 .nav-btn#nb-micro.active{background:var(--micro);color:#000;border-color:var(--micro);font-weight:700;}
 
 /* ── VIEWS ── */
-.view{display:none;}
+.view{display:block;}
 .view.active{display:block;animation:fadein 0.22s ease;}
 @keyframes fadein{from{opacity:0;transform:translateY(5px)}to{opacity:1;transform:none}}
 
@@ -183,51 +183,49 @@ header{padding:1.1rem 2.5rem;display:flex;align-items:center;justify-content:spa
   .stats{display:none;}
 }
 </style>
-<style>
-.back-btn{display:inline-flex;align-items:center;gap:6px;color:#94a3b8;text-decoration:none;
-font-size:0.85rem;padding:6px 12px;border-radius:8px;border:1px solid #334155;
-margin-bottom:8px;transition:color .2s,border-color .2s}
-.back-btn:hover{color:#f1f5f9;border-color:#64748b}
-
-.grid{display:grid;grid-template-columns:repeat(auto-fill,minmax(280px,1fr));gap:1.25rem;padding:1rem 1.25rem 2rem;}
-@media(max-width:600px){
-  .grid{grid-template-columns:1fr 1fr;gap:0.75rem;padding:0.75rem;}
-  .cdiag svg{min-height:120px;}
-  .ctit h3{font-size:0.78rem;}
-}
-@media(max-width:380px){
-  .grid{grid-template-columns:1fr;}
-}
-
-</style>
+<style>a.nav-btn{text-decoration:none;} span.nav-btn.active{opacity:1;font-weight:700;cursor:default;}</style>
 </head>
 <body>
-<div class="app">
-  <header class="hdr">
-    <a class="back-btn" href="index.html">&#8592; Home</a>
-    <h1>BIZ-OMICS</h1>
-    <p class="tagline">Macroeconomics Flashcards</p>
-  </header>
-  <div class="toolbar">
-    <input id="maSearch" class="search" type="search" placeholder="Search cards…" oninput="maSearchFn()">
-    <button class="tbtn" onclick="maShuffle()">&#8644; Shuffle</button>
-    <button class="tbtn" onclick="maReset()">&#8634; Reset</button>
+<header>
+  <div class="logo">BIZ-<span>OMICS</span></div>
+  <div class="header-nav">
+    <a class="nav-btn" href="index.html">Home</a>
+    <span class="nav-btn active">&#x25B8; Macro</span>
+    <a class="nav-btn" href="micro.html">&#x25B8; Micro</a>
   </div>
-  <div class="stats-bar" id="maStats"></div>
-  <div class="filter-bar">
-    <button class="fbtn active" onclick="maF('all',this)">All</button>
-    <button class="fbtn" onclick="maF('framework',this)">Macro Framework</button>
-    <button class="fbtn" onclick="maF('adas',this)">AD/AS</button>
-    <button class="fbtn" onclick="maF('inflation',this)">Inflation &amp; Deflation</button>
-    <button class="fbtn" onclick="maF('unemployment',this)">Unemployment</button>
-    <button class="fbtn" onclick="maF('growth',this)">Economic Growth</button>
-    <button class="fbtn" onclick="maF('fiscal',this)">Fiscal Policy</button>
-    <button class="fbtn" onclick="maF('monetary',this)">Monetary Policy</button>
-    <button class="fbtn" onclick="maF('exchange',this)">Exchange Rates</button>
-    <button class="fbtn" onclick="maF('trade',this)">Trade Theory &amp; Policy</button>
-    <button class="fbtn" onclick="maF('inequality',this)">Inequality</button>
+</header>
+<!-- ═══ MACRO ═══ -->
+<div class="view" id="v-macro">
+  <div class="progress-bar"><div class="prog-fill" id="maProg"></div></div>
+  <div class="bank-wrap">
+
+    <div class="controls">
+      <span class="filter-label">Topic:</span>
+      <button class="fbtn active" onclick="maF('all',this)">All</button>
+      <button class="fbtn" onclick="maF('framework',this)">Macro Framework</button>
+      <button class="fbtn" onclick="maF('adas',this)">AD/AS</button>
+      <button class="fbtn" onclick="maF('inflation',this)">Inflation &amp; Deflation</button>
+      <button class="fbtn" onclick="maF('unemployment',this)">Unemployment</button>
+      <button class="fbtn" onclick="maF('growth',this)">Economic Growth</button>
+      <div class="div"></div>
+      <button class="fbtn" onclick="maF('fiscal',this)">Fiscal Policy</button>
+      <button class="fbtn" onclick="maF('monetary',this)">Monetary Policy</button>
+      <button class="fbtn" onclick="maF('exchange',this)">Exchange Rates</button>
+      <button class="fbtn" onclick="maF('trade',this)">Trade Theory &amp; Policy</button>
+      <button class="fbtn" onclick="maF('inequality',this)">Inequality</button>
+      <div class="stats">
+        <div class="stat"><span class="stat-n" id="maSeen">0</span><span class="stat-l">Seen</span></div>
+        <div class="stat"><span class="stat-n" id="maTotal">0</span><span class="stat-l">Total</span></div>
+      </div>
+      <div class="search-wrap">
+        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><circle cx="11" cy="11" r="8"/><line x1="21" y1="21" x2="16.65" y2="16.65"/></svg>
+        <input class="search-input" id="maSearch" type="text" placeholder="Search diagrams…" oninput="maSearchFn()" autocomplete="off"/>
+      </div>
+      <button class="btn-g" onclick="maReset()">Reset</button>
+      <button class="btn-p" onclick="maShuffle()">&#x21BA; Shuffle</button>
+    </div>
+    <div id="maGrid" class="card-grid"></div>
   </div>
-  <div class="grid" id="maGrid"></div>
 </div>
 <script>
 
