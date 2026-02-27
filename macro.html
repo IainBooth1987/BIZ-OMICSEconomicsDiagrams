@@ -1625,41 +1625,41 @@ function cpfDiagram() {
   //
   // Gains from trade = shaded region between CPF and PPF, right of specialisation
   return `<svg viewBox="0 0 220 168" xmlns="http://www.w3.org/2000/svg">
-    ${miAx(28,148,212,16,'Cloth (X)','Wheat (Y)')}
+    ${axes(28,148,212,16,'Cloth (X)','Wheat (Y)')}
     <!-- Axis tick labels -->
-    <text x="140" y="157" fill="${MU}" font-size="6" text-anchor="middle">1000</text>
-    <text x="209" y="157" fill="${MU}" font-size="6" text-anchor="middle">1600</text>
-    <text x="22" y="19" fill="${MU}" font-size="6" text-anchor="end">200</text>
-    <text x="22" y="85" fill="${MU}" font-size="6" text-anchor="end">100</text>
+    <text x="140" y="157" fill="${C.label}" font-size="6" text-anchor="middle">1000</text>
+    <text x="209" y="157" fill="${C.label}" font-size="6" text-anchor="middle">1600</text>
+    <text x="22" y="19" fill="${C.label}" font-size="6" text-anchor="end">200</text>
+    <text x="22" y="85" fill="${C.label}" font-size="6" text-anchor="end">100</text>
     <!-- Gains from trade region: shaded triangle between CPF and PPF -->
     <polygon points="28,16 143,148 212,148" fill="rgba(16,185,129,0.15)"/>
     <!-- PPF: Country A without trade — (0,200Y) to (1000X,0) -->
     <line x1="28" y1="16" x2="143" y2="148"
-          stroke="${MU}" stroke-width="2.5" fill="none"/>
-    <text x="148" y="152" fill="${MU}" font-size="8" font-weight="bold">PPF</text>
+          stroke="${C.muted}" stroke-width="2.5" fill="none"/>
+    <text x="148" y="152" fill="${C.muted}" font-size="8" font-weight="bold">PPF</text>
     <!-- CPF: through specialisation point at world price ratio 1Y=8X — (0,200Y) to (1600X,0) -->
     <line x1="28" y1="16" x2="212" y2="148"
-          stroke="${S}" stroke-width="2.5" fill="none" stroke-dasharray="6,3"/>
-    <text x="208" y="143" fill="${S}" font-size="8" font-weight="bold">CPF</text>
+          stroke="${C.lras}" stroke-width="2.5" fill="none" stroke-dasharray="6,3"/>
+    <text x="208" y="143" fill="${C.lras}" font-size="8" font-weight="bold">CPF</text>
     <!-- Terms of trade annotation on CPF slope -->
-    <text x="170" y="115" fill="${S}" font-size="6.5" text-anchor="middle">ToT: 1Y = 8X</text>
+    <text x="170" y="115" fill="${C.lras}" font-size="6.5" text-anchor="middle">ToT: 1Y = 8X</text>
     <!-- Autarky point: (500X, 100Y) — pre-trade consumption on PPF -->
-    <circle cx="85.5" cy="82" r="4" fill="white" stroke="${MU}" stroke-width="1.8"/>
-    <text x="62" y="78" fill="${MU}" font-size="7" font-weight="bold">Autarky</text>
-    <line x1="69" y1="79" x2="81" y2="82" stroke="${MU}" stroke-width="1"/>
+    <circle cx="85.5" cy="82" r="4" fill="white" stroke="${C.muted}" stroke-width="1.8"/>
+    <text x="62" y="78" fill="${C.muted}" font-size="7" font-weight="bold">Autarky</text>
+    <line x1="69" y1="79" x2="81" y2="82" stroke="${C.muted}" stroke-width="1"/>
     <!-- Specialisation point: (0X, 200Y) — full spec in wheat -->
-    <circle cx="28" cy="16" r="4" fill="${S}"/>
-    <text x="33" y="14" fill="${S}" font-size="7" font-weight="bold">Specialise</text>
-    <text x="33" y="22" fill="${S}" font-size="6.5">(200Y, 0X)</text>
+    <circle cx="28" cy="16" r="4" fill="${C.lras}"/>
+    <text x="33" y="14" fill="${C.lras}" font-size="7" font-weight="bold">Specialise</text>
+    <text x="33" y="22" fill="${C.lras}" font-size="6.5">(200Y, 0X)</text>
     <!-- Consumption point: (960X, 80Y) — beyond PPF, on CPF -->
-    <circle cx="138.4" cy="95.2" r="4.5" fill="${LC}"/>
-    <text x="143" y="89" fill="${LC}" font-size="7" font-weight="bold">Consumption</text>
-    <text x="143" y="97" fill="${LC}" font-size="6.5">(80Y + 960X)</text>
+    <circle cx="138.4" cy="95.2" r="4.5" fill="${C.teal}"/>
+    <text x="143" y="89" fill="${C.teal}" font-size="7" font-weight="bold">Consumption</text>
+    <text x="143" y="97" fill="${C.teal}" font-size="6.5">(80Y + 960X)</text>
     <!-- Dashed guides to consumption point -->
-    <line x1="28" y1="95.2" x2="138.4" y2="95.2" stroke="${LC}" stroke-width="1" stroke-dasharray="3,2"/>
-    <line x1="138.4" y1="95.2" x2="138.4" y2="148" stroke="${LC}" stroke-width="1" stroke-dasharray="3,2"/>
-    <text x="22" y="98" fill="${LC}" font-size="6" text-anchor="end">80</text>
-    <text x="135" y="157" fill="${LC}" font-size="6" text-anchor="middle">960</text>
+    <line x1="28" y1="95.2" x2="138.4" y2="95.2" stroke="${C.teal}" stroke-width="1" stroke-dasharray="3,2"/>
+    <line x1="138.4" y1="95.2" x2="138.4" y2="148" stroke="${C.teal}" stroke-width="1" stroke-dasharray="3,2"/>
+    <text x="22" y="98" fill="${C.teal}" font-size="6" text-anchor="end">80</text>
+    <text x="135" y="157" fill="${C.teal}" font-size="6" text-anchor="middle">960</text>
     <!-- Gains from trade label in shaded region -->
     <text x="162" y="135" fill="rgba(16,185,129,0.9)" font-size="6.5" text-anchor="middle" font-weight="bold">Gains</text>
     <text x="162" y="143" fill="rgba(16,185,129,0.9)" font-size="6.5" text-anchor="middle" font-weight="bold">from trade</text>
@@ -2666,7 +2666,7 @@ const maCards = [
     diagramType:'compAdvGrid',
     explanation:'With numerical examples, comparative advantage is determined by comparing opportunity costs across countries. Country A: produces 200Y or 1,000X (OC of Y = 5X). Country B: produces 100Y or 1,500X (OC of Y = 15X). A has comparative advantage in Y (OC of 5X < B\'s 15X); B has comparative advantage in X (OC = 1/15Y vs A\'s 1/5Y). Under full specialisation: 200Y + 1,500X > autarky production of ~150Y + ~1,250X. Both countries gain by trading within the terms of trade range (between the two OC ratios). Evaluation: the gains from trade are real but unevenly distributed within countries — workers in the sector where the country has comparative disadvantage face unemployment and wage pressure, creating domestic winners and losers even when the aggregate gain is positive. Links to: PPF, trade policy, trade creation, protectionism.',
     keyPoint:'Compare OC (not absolute productivity) to find where each country should specialise. Both gain if each trades within the terms of trade range. Evaluation: the distribution of gains from trade matters — the Stolper-Samuelson theorem predicts that the scarce factor of production (typically low-skill labour in advanced economies) loses from trade, creating political pressure for protectionism. UK example: Ricardo\'s original illustration (UK cloth, Portuguese wine) — even if Portugal was better at both, both gained from specialisation. Modern equivalent: UK exports high-value services, imports manufactured goods. Links: Comparative Advantage PPF, Trade Creation, Trade Policy, Globalisation.' },
-    {category:'trade', catLabel:'Trade Theory & Policy',
+    {id:59.5, category:'trade', catLabel:'Trade Theory & Policy',
     concept:'Gains from Trade: CPF',
     diagramType:'cpf',
     explanation:'The Consumption Possibility Frontier (CPF) shows the combinations of goods a country can consume after specialising and trading at the world price ratio (terms of trade). Without trade, consumption is limited to points on or inside the PPF. With trade, a country can consume beyond its PPF — the CPF lies outside the PPF whenever the world price ratio (terms of trade) differs from the domestic opportunity cost ratio. Using the same numbers as the comparative advantage card: Country A (UK) has a PPF of 200Y (wheat) or 1,000X (cloth) — a domestic OC of 1Y = 5X. Country B (Portugal) has OC of 1Y = 15X, so A has comparative advantage in wheat (Y). If the terms of trade settle at 1Y = 8X (between the two OC ratios), A fully specialises at (200Y, 0X) and trades 120Y for 960X — reaching the consumption point (80Y, 960X), which lies clearly outside the PPF. The CPF runs from the specialisation point through the world price ratio; its x-intercept (1,600X) exceeds the PPF x-intercept (1,000X), and its slope (-1/8) is flatter than the PPF slope (-1/5), creating a triangular gains-from-trade region between the two frontiers. Key assumptions: full specialisation (simplification — partial specialisation also generates gains), constant returns (linear PPF), and terms of trade between the two domestic OC ratios. Evaluation: the size of the gains depends on the terms of trade — the closer the ToT to A\'s own OC (1Y=5X), the smaller A\'s gains and the larger B\'s; the closer to B\'s OC (1Y=15X), the larger A\'s gains. In practice terms of trade are determined by relative supply and demand in world markets. Links to: comparative advantage, PPF, absolute advantage, terms of trade.',
@@ -2740,10 +2740,12 @@ function renderBank(cards, gridId, seenSet, diagFn, filterCat, searchTerm){
       '</div>';
     let diagRendered = false;
     fc.addEventListener('click', function(){
-      // Render diagram on first interaction
       if (!diagRendered) {
         const diagEl = fc.querySelector('.cdiag');
-        if (diagEl) diagEl.innerHTML = diagFn(card);
+        if (diagEl) {
+          try { diagEl.innerHTML = diagFn(card); }
+          catch(e) { diagEl.innerHTML = '<div style="color:#94a3b8;font-size:10px;padding:8px;">Diagram unavailable</div>'; }
+        }
         diagRendered = true;
       }
       fc.classList.toggle('flipped');
